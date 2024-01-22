@@ -6,4 +6,11 @@ In the context of **personalized medicine**, this innovative TDA application hol
 
 ---
 
+## How the Mapping Framework works?
+The Mapping Framework concentrates on the initial two steps of the Mapper algorithm: **Filtering** and **Covering**. The Filtering operation plays a pivotal role in the transformation of original data for topological analysis. It employs a filter (lens) function to project high-dimensional data points into a more compact representation, aligning with specific analysis objectives and data attributes. On the other hand, the Covering operation simplifies high-dimensional data by segmenting it into overlapping bins, each linked to a node in the TDA graph. This meticulous process, regulated by _resolution_ and _gain_ parameters, captures local structures, thereby augmenting the Mapper algorithm capability to comprehend intricate data topology.
+
+### Pipeline
+**1. TDA graph creation**  
+Construct a TDA graph from an initial dataset of samples using the Mapper algorithm. Utilize various dimensionality reduction techniques to project the initial data into a lower-dimensional space, usually 2D. Keep each transformation for subsequent reuse, facilitating the projection of new samples into established spatial representation obtained through these techniques.
+
 
