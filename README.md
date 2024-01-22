@@ -27,3 +27,5 @@ Upon having the Cover and filter transformations prepared, the final step involv
 
 ![Mapping Framework scheme](/Images/mapping_framework.png)
 
+---
+
