@@ -25,4 +25,5 @@ Upon having the Cover and filter transformations prepared, the final step involv
 
 3. The new sample is mapped inside a "noisy" node, denoting nodes that were discarded during the creation of the TDA graph. These nodes correspond to bins containing only one sample, and in the Clustering step, they are deemed as noise.
 
+![Mapping Framework scheme](/Images/mapping_framework.png)
 
