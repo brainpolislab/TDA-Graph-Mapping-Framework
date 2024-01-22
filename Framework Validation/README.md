@@ -7,6 +7,7 @@ The dataset included in this repository comprises information about 587 subjects
 ---
 
 ## New sample mapping function (Python)
+Below is reported the python function specifically designed to map new samples inside the pre-construcetd TDA graph
 ```python
 def mapping_tda(data, sample, cover):
     # Add index column to data
