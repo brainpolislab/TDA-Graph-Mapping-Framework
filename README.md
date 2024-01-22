@@ -29,3 +29,41 @@ Upon having the Cover and filter transformations prepared, the final step involv
 
 ---
 
+## New sample mapping function (Python)
+The following Python function has been purposefully crafted to map new samples within the pre-constructed TDA graph.
+```python
+def mapping_tda(data, sample, cover):
+    # Add index column to data
+    indices = np.arange(data.shape[0])[:, np.newaxis]
+    data = np.hstack((indices, data))
+
+    # Fit cover and get cube centers
+    cube_centers = cover.fit(data)
+    cube_centers = [(sublist[0], sublist[1]) for sublist in cube_centers]
+
+    # Transform data into hypercubes
+    hyper_cubes = cover.transform(data, cube_centers)
+
+    # Find indices of cubes containing the sample
+    index_cubes = cover.find(sample)
+
+    # Get indices of matching hypercubes
+    hyper_cubes_index = []
+    for index in index_cubes:
+        cube = cover.transform_single(data, cube_centers[index])
+
+        for j in range(len(hyper_cubes)):
+            if np.array_equal(cube, hyper_cubes[j]):
+                hyper_cubes_index.append(j)
+
+    # Print hypercubes with only one sample
+    for k in hyper_cubes_index:
+        if len(hyper_cubes[k]) == 1:
+            print(f'Hyper cube {k} with only one sample')
+        else:
+            continue
+
+    # Return indices, hypercubes, and centers
+    return hyper_cubes_index, hyper_cubes, cube_centers
+```
+The initial operation of the function involves fitting the Cover to determine the _cube centers_, denoting the central points of the bins within the bidimensional space generated following the Fiiltering step. Subsequently, leveraging these cube centers, the function generates the _hypercubes_ (the bins) that contain the input data, which are the initial data transformed during the Filtering step, considering one of the available dimensionality reduction techniques. These hypercubes subsequently serve as the 
