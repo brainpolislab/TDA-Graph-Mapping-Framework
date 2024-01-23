@@ -10,7 +10,7 @@ Three techniques for dimensionality reduction have been explored:
 - **Kernel PCA** [🔗](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.KernelPCA.html)
 - **Isomap** [🔗](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.Isomap.html)
 
-The 
+To validate the framework, a TDA graph is constructed exclusively based on HC subjects. Subsequently, the framework is applied to remap each sample, and the accuracy of their mapping within the corresponding nodes of the pre-constructed TDA graph is assessed. The anticipated outcome is the correct mapping of each sample to its respective nodes, signifying the framework consistency and robustness.
 
 
 
