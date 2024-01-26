@@ -34,38 +34,38 @@ The following Python function has been purposefully crafted to map new samples w
 ```python
 def mapping_tda(data, sample, cover):
     # Add index column to data
-    indices = np.arange(data.shape[0])[:, np.newaxis]
-    data = np.hstack((indices, data))
+    idx = np.arange(data.shape[0])[:, np.newaxis]
+    data = np.hstack((idx, data))
 
     # Fit cover and get cube centers
-    cube_centers = cover.fit(data)
-    cube_centers = [(sublist[0], sublist[1]) for sublist in cube_centers]
+    bins = cover.fit(data)
+    bins = [(sublist[0], sublist[1]) for sublist in bins]
 
     # Transform data into hypercubes
-    hyper_cubes = cover.transform(data, cube_centers)
+    hypercubes = cover.transform(data, bins)
 
     # Find indices of cubes containing the sample
     index_cubes = cover.find(sample)
 
     # Get indices of matching hypercubes
-    hyper_cubes_index = []
+    hypercubes_index = []
     for index in index_cubes:
-        cube = cover.transform_single(data, cube_centers[index])
+        cube = cover.transform_single(data, bins[index])
 
-        for j in range(len(hyper_cubes)):
-            if np.array_equal(cube, hyper_cubes[j]):
-                hyper_cubes_index.append(j)
+        for j in range(len(hypercubes)):
+            if np.array_equal(cube, hypercubes[j]):
+                hypercubes_index.append(j)
 
     # Print hypercubes with only one sample
-    for k in hyper_cubes_index:
-        if len(hyper_cubes[k]) == 1:
+    for k in hypercubes_index:
+        if len(hypercubes[k]) == 1:
             print(f'Hyper cube {k} with only one sample')
         else:
             continue
 
     # Return indices, hypercubes, and centers
-    return hyper_cubes_index, hyper_cubes, cube_centers
+    return hypercubes_index, hypercubes, bins
 ```
-The initial operation of the function involves fitting the Cover to determine the `cube_centers`, denoting the central points of the bins within the bidimensional space generated following the Fiiltering step. Subsequently, leveraging these `cube_centers`, the function generates the `hyper_cubes` (the bins) that contain the input data, which are the initial data transformed during the Filtering step, considering one of the available dimensionality reduction techniques. These `hyper_cubes` subsequently serve as the nodes within the TDA graph.  
-Following the identification of `hyper_cubes`, the subsequent step focuses on mapping a new sample within the bidimensional space defined by the variable `data`. This entails retrieving the index or indices corresponding to the `hyper_cubes` wherein the new sample has been mapped. Importantly, these indices align with the nodes of the preconstructed TDA graph, providing insights into the spatial location of the new sample post-mapping.  
-Conclusively, the function also outputs information regarding wheter the new sample has been mapped within a `hyper_cubes` containing only a single sample. This specific categorization is significant, as `hyper_cubes` with a singular sample are considered indicative of noise within the dataset.
+The initial operation of the function involves fitting the Cover to determine the `bins`, denoting the bins within the bidimensional space generated following the Filtering step. Subsequently, leveraging these `bins`, the function generates the `hypercubes` that contain the input data, which are the initial data transformed during the Filtering step, considering one of the available dimensionality reduction techniques. These `hypercubes` subsequently serve as the nodes within the TDA graph.  
+Following the identification of `hypercubes`, the subsequent step focuses on mapping a new sample within the bidimensional space defined by the variable `data`. This entails retrieving the index or indices corresponding to the `hypercubes` wherein the new sample has been mapped. Importantly, these indices align with the nodes of the preconstructed TDA graph, providing insights into the spatial location of the new sample post-mapping.  
+Conclusively, the function also outputs information regarding wheter the new sample has been mapped within a `hypercubes` containing only a single sample. This specific categorization is significant, as `hypercubes` with a singular sample are considered indicative of noise within the dataset.
