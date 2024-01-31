@@ -47,5 +47,7 @@ These distances were subjected to subsequent statistical analysis, aimed at iden
 ## Results analysis
 After gathering all distance distributions for each feature set, categorized by diagnostic class (Reference HC, ROP, ROD, and CHR), statistical tests were conducted, specifically the Kruskal-Wallis test, to determine whether there exists any significant statistical difference between the HC reference distance distribution and those of the patients. Two distinct assessments were conducted for this purpose:
 
-1. _HC vs others_: In this scenario, all patient distance distributions were concatenated and compared with the reference distance distribution.
-2. _HC vs ROP vs ROD vs CHR_: In this scenario, each distance distribution was considered individually.
+1. _HC vs others_  
+   In this scenario, all patient distance distributions were concatenated and compared with the reference distance distribution.
+2. _HC vs ROP vs ROD vs CHR_  
+   In this scenario, each distance distribution was considered individually.
