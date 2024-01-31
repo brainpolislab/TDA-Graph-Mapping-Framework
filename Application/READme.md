@@ -51,3 +51,5 @@ After gathering all distance distributions for each feature set, categorized by 
    In this scenario, all patient distance distributions were concatenated and compared with the reference distance distribution.
 2. _HC vs ROP vs ROD vs CHR_  
    In this scenario, each distance distribution was considered individually.
+
+If the second assessment reveals any significant disparities among distance distributions, a subsequent Post-Hoc analysis has been conducted. At this point, the objective is to identify a combination of Cover parameters that exhibits notable statistical differences among each distribution.
