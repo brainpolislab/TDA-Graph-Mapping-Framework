@@ -39,7 +39,13 @@ A schematic representation of the pipeline described above is presented below:
 
 **N.B.** It is important to note that even if a new patient has been correctly mapped inside some nodes of the normative TDA graph, it may occur that among those nodes, some are indeed nodes of the graph while others are identified as "noisy" nodes. In such cases, only the "actual" nodes are considered when computing the distance with the barycenter, with the assumption that "noisy" nodes are akin to outliers.
 
+Given the sensitivity of TDA graphs to Cover parameters, a grid search has been employed to determine suitable configurations of parameters (namely _resolution_ and _gain_). Accordingly, two distinct ranges of values for _resolution_ and _gain_ have been defined. For each combination of these parameters, the above pipeline has been executed. Subsequently, the distance distributions corresponding to each combination of Cover parameters were recorded.  
+These distances were subjected to subsequent statistical analysis, aimed at identifying parameter configurations that enable the establishment of four independent distance distributions.
+
 ---
 
 ## Results analysis
+After gathering all distance distributions for each feature set, categorized by diagnostic class (Reference HC, ROP, ROD, and CHR), statistical tests were conducted, specifically the Kruskal-Wallis test, to determine whether there exists any significant statistical difference between the HC reference distance distribution and those of the patients. Two distinct assessments were conducted for this purpose:
 
+1. _HC vs others_: In this scenario, all patient distance distributions were concatenated and compared with the reference distance distribution.
+2. _HC vs ROP vs ROD vs CHR_: In this scenario, each distance distribution was considered individually.
