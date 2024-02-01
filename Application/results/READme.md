@@ -5,6 +5,6 @@ For the grid search, the following two ranges of values have been defined for Co
 
 Each of the four dimensionality reduction techniques underwent rigorous testing, with **Isomap** emerging as the most effective among them. Notably, for all four techniques, combinations of Cover parameters were identified that exhibited statistically significant differences between reference distance distributions and those of patients. However, **Isomap** displayed several combinations of Cover parameters that also yielded favorable post-hoc results, with significant distinctions observed across almost all four classes (HC, ROP, ROD, and CHR).
 
-Here is an example of heatmaps result
+Below is an illustration of the heatmap results subsequent to the grid search, aimed at identifying the most suitable combination of Cover parameters, specifically concerning _structural magnetic resonance imaging_ (sMRI) features:
 
 
