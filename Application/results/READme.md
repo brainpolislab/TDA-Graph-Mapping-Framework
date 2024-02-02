@@ -12,5 +12,6 @@ Below is an illustration of the heatmap results subsequent to the grid search, a
 For each combination of Cover parameters, the heatmaps reports the resulting _p-value_ from the Kruskal-Wallis test on the four distance distributions from the normative TDA graph barycenter (HC vs ROP vs ROD vs CHR). Following this, a post-hoc analysis was conducted for each combination that yielded a significant result, aimed at evaluating the pairwise differences of distance distributions.  
 The subsequent configurations of Cover parameters, along with the resulting _p-value_ matrix, are provided below, highlighting the most pertinent findings.
 
+![Post-hoc analysis Isomap](/Images/post_hoc_isomap.png)
 
 
