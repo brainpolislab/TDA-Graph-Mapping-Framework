@@ -12,8 +12,6 @@ Three techniques for dimensionality reduction have been explored:
 
 To validate the framework, a TDA graph is constructed exclusively based on HC subjects. Subsequently, the framework is applied to remap each sample, and the accuracy of their mapping within the corresponding nodes of the pre-constructed TDA graph is assessed. The anticipated outcome is the correct mapping of each sample to its respective nodes, signifying the framework consistency and robustness.  
 
-As evident from the notebook, it is observed that, for all four employed dimensionality reduction techniques, each sample has been accurately remapped to its corresponding nodes.
-
 
 
 
