@@ -11,19 +11,19 @@ The Mapping Framework concentrates on the initial two steps of the Mapper algori
 
 ### Pipeline
 **a. TDA graph creation**  
-Construct a TDA graph from an initial dataset of samples using the Mapper algorithm. Utilize various dimensionality reduction techniques to project the initial data into a lower-dimensional space, usually 2D. Keep each transformation for subsequent reuse, facilitating the projection of new samples into established spatial representation obtained through these techniques.
+Construct a TDA graph from an initial train dataset using the Mapper algorithm. Utilize various dimensionality reduction techniques to project the initial train data into a lower-dimensional space, usually 2D. Keep each transformation for subsequent reuse, facilitating the projection of new test samples into established spatial representation obtained through these techniques.
 
 **b. Cover step analysis**  
-After constructing the bidimensional space representation of the initial dataset, the Cover is established using the projected data. Consequently, hypercubes are generated based on the _n_cubes_ and _perc_overlap_ parameters, which are defined at the outset and remain constant throughout the entirety of the mapping procedure.
+After constructing the bidimensional space representation of the initial dataset, the Cover is established using the projected train data. Consequently, hypercubes are generated based on the _n_cubes_ and _perc_overlap_ parameters, which are defined at the outset and remain constant throughout the entirety of the mapping procedure.
 
 **c. New sample projection**  
-Upon having the Cover and Filter transformations prepared, the final step involves projecting a new sample into the pre-constructed TDA graph. In this projection, the new sample undergoes transformation using the saved transformation from step (a) and is subsequently projected into the 2D space where the TDA graph is defined. Subsequently, three distinct outcomes emerge:
+Upon having the Cover and Filter transformations prepared, the final step involves projecting a new test sample into the pre-constructed TDA graph. In this projection, the new sample undergoes transformation using the saved transformation from step (a) and is subsequently projected into the 2D space where the TDA graph is defined. Subsequently, three distinct outcomes emerge:
 
-1. The new sample is accurately mapped inside at least one node of the TDA graph, signifying that the transformed new sample lies within a hypercube of the Cover that was transformed into a node following the Clustering (the final step of the Mapper algorithm).
+1. The new test sample is accurately mapped inside at least one node of the TDA graph, signifying that the transformed new sample lies within a hypercube of the Cover that was transformed into a node following the Clustering (the final step of the Mapper algorithm).
   
-2. The new sample is not mapped into any node of the pre-constructed TDA graph, indicating that the new sample does not fall within any hypercube of the Cover.
+2. The new test sample is not mapped into any node of the pre-constructed TDA graph, indicating that the new sample does not fall within any hypercube of the Cover.
 
-3. The new sample is mapped inside a "noisy" node, denoting nodes that were discarded during the creation of the TDA graph. These nodes correspond to bins containing a number of samples less than the _min_samples_ parameters of DBSCAN, and in the Clustering step, they are deemed as noise and then discarded.
+3. The new test sample is mapped inside a "noisy" node, denoting nodes that were discarded during the creation of the TDA graph. These nodes correspond to bins containing a number of samples less than the _min_samples_ parameters of DBSCAN, and in the Clustering step, they are deemed as noise and then discarded.
 
 [Mapping Framework scheme](/images/framework_scheme.png)
 
@@ -84,6 +84,8 @@ class MappingTDA():
 ```
 The initial operation of the function involves fitting the Cover to determine the `bins`, denoting the bins within the bidimensional space generated following the Filtering step. Subsequently, leveraging these `bins`, the function generates the `hypercubes` that contain the input data, which are the initial data transformed during the Filtering step, considering one of the available dimensionality reduction techniques. These `hypercubes` subsequently serve as the nodes within the TDA graph.  
 Following the identification of `hypercubes`, the subsequent step focuses on mapping a new sample within the bidimensional space defined by the variable `data`. This entails retrieving the index or indices corresponding to the `hypercubes` wherein the new sample has been mapped. Importantly, these indices align with the nodes of the preconstructed TDA graph, providing insights into the spatial location of the new sample post-mapping.  
+
+Alongside the designed framework, a validation pipeline has been developed to demonstrate its reliability. Specifically, the aforementioned process has been applied to map train subbjects. This involves creating a graph based on train data samples, transforming each subject using the recently fitted filter function, and subsequently mapping them onto the graph. By applying the specified methodology to the train subjects, we identify the nodes to which they have been mapped. Reliability can be assessed by verifying that each subject in the train set has been mapped to the precise nodes of the graph to which they belong, as determined by the Mapper algorithm.
 
 ---
 
