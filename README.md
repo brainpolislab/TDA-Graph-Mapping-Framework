@@ -25,7 +25,7 @@ Upon having the Cover and Filter transformations prepared, the final step involv
 
 3. The new test sample is mapped inside a "noisy" node, denoting nodes that were discarded during the creation of the TDA graph. These nodes correspond to bins containing a number of samples less than the _min_samples_ parameters of DBSCAN, and in the Clustering step, they are deemed as noise and then discarded.
 
-[Mapping Framework scheme](/images/framework_scheme.png)
+![Mapping Framework scheme](/images/framework_scheme.png)
 
 ---
 
