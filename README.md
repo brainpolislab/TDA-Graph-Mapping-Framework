@@ -91,3 +91,8 @@ Alongside the designed framework, a validation pipeline has been developed to de
 
 ## Methods and Materials
 The Mapping Framework has been developed leveraging [Kepler Mapper](https://kepler-mapper.scikit-tda.org/en/latest/), a software library that integrates the [Mapper](https://www.quantmetry.com/blog/topological-data-analysis-with-mapper/) algorithm within the Python programming language. Kepler Mapper is tailored for visualizing high-dimensional data and 3D point cloud data. It is equipped with capabilities to utilize cluster and scaling algorithms that seamlessly align with the Scikit-Learn API. For visualization purposes, instead, [DyNeuSR](https://github.com/braindynamicslab/dyneusr), an open-source neuroinformatics platform, was utilized.
+
+- **Filtering**: for filtering phase the following dimensionality reduction techniques have been used:     
+  [Principal Component Analysis (PCA)](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html)     
+  [Isomap](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.Isomap.html)     
+  [KernelPCA](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.KernelPCA.html) with _rbf_ kernel
